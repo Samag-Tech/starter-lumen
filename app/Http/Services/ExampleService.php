@@ -1,7 +1,6 @@
 <?php namespace App\Http\Services;
 
 use App\Http\Resources\ExampleResource;
-
 use App\Http\Validations\ExampleValidation;
 use SamagTech\CoreLumen\Core\BaseService;
 
