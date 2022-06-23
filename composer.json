@@ -1,0 +1,37 @@
+{
+    "name": "samagtech/lumen-starter",
+    "description": "Starter Lumen",
+    "keywords": ["framework", "laravel", "lumen"],
+    "license": "MIT",
+    "type": "project",
+    "require": {
+        "php": "^8.0",
+        "aws/aws-sdk-php": "^3.224",
+        "bref/bref": "^1.5",
+        "bref/laravel-bridge": "^1.2",
+        "flipbox/lumen-generator": "^9.1",
+        "laravel/lumen-framework": "^9.0",
+        "samagtech/core-lumen": "^0.1"
+    },
+    "require-dev": {
+        "fakerphp/faker": "^1.9.1",
+        "mockery/mockery": "^1.4.4",
+        "phpunit/phpunit": "^9.5.10"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true
+    }
+}
