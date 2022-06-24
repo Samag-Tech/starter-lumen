@@ -60,7 +60,6 @@ $app->singleton(
 */
 
 $app->configure('app');
-$app->configure('application');
 $app->configure('queue');
 
 /*
@@ -76,6 +75,10 @@ $app->configure('queue');
 
 $app->middleware([
     App\Http\Middleware\MaintenanceMiddleware::class
+]);
+
+$app->middleware([
+    App\Http\Middleware\CorsMiddleware::class
 ]);
 
 // $app->routeMiddleware([

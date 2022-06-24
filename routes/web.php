@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Queue;
 |
 */
 
+
 $router->get('/', 'ExampleController@index');
 $router->get('/{id}', 'ExampleController@show');
 $router->post('/', 'ExampleController@store');

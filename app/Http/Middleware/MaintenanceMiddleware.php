@@ -15,7 +15,7 @@ class MaintenanceMiddleware
      */
     public function handle($request, Closure $next) {
 
-        if ( config('application.maintenance') ) {
+        if ( env('MAINTENANCE') ) {
             return response()->json(['message' => 'Il server è in manutenzione'], 503);
         }
 
