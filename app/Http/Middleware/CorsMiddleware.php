@@ -4,8 +4,11 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class CorsMiddleware
-{
+/**
+ * Middleware per la gestione del cors
+ *
+ */
+class CorsMiddleware {
     /**
      * Handle an incoming request.
      *
@@ -13,18 +16,19 @@ class CorsMiddleware
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
-    {
+    public function handle($request, Closure $next) {
+
+        // Recupera la configurazione del cors
+        app()->configure('cors');
+
         $headers = [
-            'Access-Control-Allow-Origin' => getenv('ACCESS_CONTROL_ALLOW_ORIGIN'),
-            'Access-Control-Allow-Methods' => 'POST, GET, OPTIONS, PUT, DELETE',
-            'Access-Control-Allow-Credentials' => 'true',
-            'Access-Control-Max-Age' => '86400',
-            'Access-Control-Allow-Headers' => 'Content-Type, Authorization, X-Requested-With, X-API-KEY'
+            'Access-Control-Allow-Origin' => config('cors.origin'),
+            'Access-Control-Allow-Methods' => config('cors.methods'),
+            'Access-Control-Allow-Headers' => config('cors.headers')
         ];
 
         if ($request->isMethod('OPTIONS')) {
-            return response()->json('{"method":"OPTIONS"}', 200, $headers);
+            return response()->json(['message' => 'Ok'], 200, $headers);
         }
 
         $response = $next($request);
@@ -32,8 +36,6 @@ class CorsMiddleware
         foreach ($headers as $key => $value) {
             $response->header($key, $value);
         }
-
-        return $response;
 
         return $response;
     }
