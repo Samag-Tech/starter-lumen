@@ -4,6 +4,7 @@
 
 use App\Jobs\ExampleJob;
 use Illuminate\Support\Facades\Queue;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,4 +24,9 @@ $router->post('/', 'ExampleController@store');
 $router->put('/{id}', 'ExampleController@update');
 $router->delete('/', 'ExampleController@delete');
 
-
+$router->group(['prefix' => 'auth'], function () use ($router) {
+    $router->post('login', 'AuthController@login');
+    $router->post('logout', 'AuthController@logout');
+    $router->post('refresh', 'AuthController@refresh');
+    $router->get('profile', 'AuthController@profile');
+});
