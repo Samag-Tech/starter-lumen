@@ -59,8 +59,9 @@ $app->singleton(
 |
 */
 
-$app->configure('app');
+$app->configure('application');
 $app->configure('queue');
+$app->configure('jwt');
 
 /*
 |--------------------------------------------------------------------------
@@ -74,16 +75,13 @@ $app->configure('queue');
 */
 
 $app->middleware([
-    App\Http\Middleware\MaintenanceMiddleware::class
-]);
-
-$app->middleware([
+    App\Http\Middleware\MaintenanceMiddleware::class,
     App\Http\Middleware\CorsMiddleware::class
 ]);
 
-// $app->routeMiddleware([
-//     'auth' => App\Http\Middleware\Authenticate::class,
-// ]);
+$app->routeMiddleware([
+    'auth' => App\Http\Middleware\Authenticate::class,
+]);
 
 /*
 |--------------------------------------------------------------------------
@@ -97,9 +95,12 @@ $app->middleware([
 */
 
 // $app->register(App\Providers\AppServiceProvider::class);
-// $app->register(App\Providers\AuthServiceProvider::class);
+$app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
+
+// Vendor Providers
 $app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
+$app->register(PHPOpenSourceSaver\JWTAuth\Providers\LumenServiceProvider::class);
 
 /*
 |--------------------------------------------------------------------------
