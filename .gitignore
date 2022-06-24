@@ -9,4 +9,4 @@ composer.lock
 
 db
 
-docker-composer.yml
+docker-compose.yml
