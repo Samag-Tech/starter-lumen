@@ -95,12 +95,14 @@ $app->routeMiddleware([
 */
 
 // $app->register(App\Providers\AppServiceProvider::class);
-$app->register(App\Providers\AuthServiceProvider::class);
+// $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 
 // Vendor Providers
 $app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
 $app->register(PHPOpenSourceSaver\JWTAuth\Providers\LumenServiceProvider::class);
+$app->register(SamagTech\CoreLumen\Providers\GeneratorProvider::class);
+$app->register(SamagTech\CoreLumen\Providers\GenericProvider::class);
 
 /*
 |--------------------------------------------------------------------------
