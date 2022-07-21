@@ -18,11 +18,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-$router->get('/', 'ExampleController@index');
-$router->get('/{id}', 'ExampleController@show');
-$router->post('/', 'ExampleController@store');
-$router->put('/{id}', 'ExampleController@update');
-$router->delete('/', 'ExampleController@delete');
+$router->get('/', function ( ) use ($router) {
+    return $router->app->version();
+});
+
+// $router->get('/', 'ExampleController@index');
+// $router->get('/{id}', 'ExampleController@show');
+// $router->post('/', 'ExampleController@store');
+// $router->put('/{id}', 'ExampleController@update');
+// $router->delete('/', 'ExampleController@delete');
 
 $router->group(['prefix' => 'auth'], function () use ($router) {
     $router->post('login', 'AuthController@login');

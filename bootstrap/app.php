@@ -75,7 +75,8 @@ $app->configure('jwt');
 */
 
 $app->middleware([
-    App\Http\Middleware\MaintenanceMiddleware::class,
+    App\Http\Middleware\CheckLanguageMiddleware::class,
+    \SamagTech\CoreLumen\Middleware\MaintenanceMiddleware::class,
     App\Http\Middleware\CorsMiddleware::class
 ]);
 
